@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="indexstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="alert.js"></script>
+    <script src=loadMap.js></script>
+    <script src=toolbarControl.js></script>
+    <script src=sideBarControl.js></script>
+    <script src=myList.js></script>
+    <script src=logIn.js></script>
+    <script src=logOut.js></script>
+    <script src=search.js></script>
+    <script src=adminAdditionalFunction.js></script>
+    <script src="dateFilter.js"></script>
+    <script>
+        if (typeof module === 'object')
+            window.jQuery = window.$ = module.exports;
+    </script>  <!--於：用于使用electron时-->
+    <script src="jquery.cookie.js"></script>
+    <script src=cookie.js></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn_FQZui6V8Xe-70bjODMQc93WcWRm_CQ&callback=initMap"></script>
+</head>
+<body>
+<div id="login">
+    <script>
+        if (getCookie("userID") != undefined && getCookie("userID") != "null") {    //於：如果cookie存在，不需要登录
+            $("#login").hide();
+            thisUserName = getCookie("userName");       //於：用cookie给变量赋值
+            thisUserID = getCookie("userID");
+            thisAuthority = getCookie("authority");
+        } else {
+            $("#login").show();
+        }
+    </script>
+    <div class="form">
+        <div class="register-form" id="2" style="display: none;">
+            <input type="text" placeholder="username: 6-12 characters" id="unamereg" name="unamereg"/>
+            <input type="password" placeholder="password: 6-12 characters, at least 1 letter" id="pswreg"
+                   name="pswreg"/>
+            <input type="text" placeholder="email address" id="emailreg" name="emailreg"/>
+            <select class="courses" id="css">
+                <script>
+                    $.get("https://aooblog.me/COMP208/PHP/getAllProgramme.php", function (data) {
+                        let selectMenu = $("#css");
+                        let allProgramme = JSON.parse(data);
+                        let num = allProgramme.length;
+                        while (num--) {
+                            let option = "<option value=" + allProgramme[num]["programmeID"] + ">" + allProgramme[num]["programmeName"] + "</option>"
+                            selectMenu.append(option);
+                        }
+                    });
+                </script>
+            </select>
+            <button id="signupButton" onclick="signUp()">create</button>
+            <p class="message">Already registered? <a href="javascript:void(0) " onclick="changeForm()">Sign In</a></p>
+        </div>
+        <div class="login-form" id="1" style="display: block;">
+            <input type="text" placeholder="username" id="unamein" name="unamein"/>
+            <input type="password" placeholder="password" id="pswin" name="pswin"/>
+            <button id="loginButton" onclick="closeUp()">login</button>
+            <p class="message">Not registered? <a href="javascript:void(0) " onclick="changeForm()">Create an
+                account</a></p>
+            <p class="message">Forget Password? <a href="javascript:void(0) " onclick="backTo()">Get back</a></p>
+        </div>
+        <div class="getback-form" id="3" style="display: none;">
+            <input type="text" placeholder="username" id="unameback"/>
+            <input type="text" placeholder="email address" id="emailback"/>
+            <button id="sendButton" onclick="synAlertSweet('Send Email','Sending',sendMail)">send</button>
+            <p class="message">Or you can just <a href="javascript:void(0) " onclick="backTo()">Go Back</a></p>
+        </div>
+    </div>
+</div>
+
+<div id="map"></div>
+<!-- admin: Created Events Window -->
+<div id="createdEventsWindow" class="white_content" style="background:rgb(231, 235, 235) ;"></div>
+<div id="fade1" class="black_overlay" onclick='hideCreatedEventsWindow()'></div>
+
+<!-- admin: create event form -->
+<div id="creationWindow" class="white_content">
+    <form method="post" id="creationForm" name="form">
+        <h2>Create new event</h2>
+        Event Name: <br>
+        <input type="text" name="eventName" id="eventName" size="40" placeholder="<= 40 words"><br>
+        <span class="error" id="eventNameValidation"></span><br>
+
+        Event Type:<br>
+        <input type="radio" name="eventType" id="academicType" value="academic">
+        <label for="academicType">Academic</label>
+        <input type="radio" name="eventType" id="nonacademicType" value="non-academic">
+        <label for="nonacademicType">Non-academic</label>
+        <br>
+        <span class="error" id="eventTypeValidation"></span><br>
+
+        Start at: <br>
+        <input id="startTime" name="startTime" type="datetime-local" max="" onchange="setCreationMinMaxDate('from')"/>
+        <!-- datetime-local(hh:mm) 与 mySQL的 datetime(hh:mm:ss) 允许无缝对接，虽然差了ss位，默认为00 -->
+        <span class="error" id="startTimeValidation"></span><br>
+
+        End at: <br>
+        <input id="endTime" name="endTime" type="datetime-local" min="" onchange="setCreationMinMaxDate('to')"/>
+        <span class="error" id="endTimeValidation"></span><br><br>
+
+        <!-- location ID return 具体地名 -->
+        Location:<br>
+        <select name="selectLocation" id="selectLocation" class="menu">
+            <!-- loading options -->
+            <script>showLocationOptions();</script>
+        </select><br>
+        <span class="error" id="locationValidation"></span><br>
+
+        Brief:<br>
+        <textarea id="eventBrief" name="brief" rows="5" cols="70" placeholder="brief description..."></textarea><br>
+        <span class="error" id="briefValidation"></span><br>
+
+        <span>(Your name will be used as the founder)</span><br>
+        <p id="creationResponse"></p>
+        <button type="button" onclick="createNewEvent(thisUserName);"> Create</button>
+        <input type="reset" value="Reset">
+
+    </form>
+</div>
+<div id="fade2" class="black_overlay" onclick='hideCreationWindow()'></div>
+
+<div class="username">
+    <button id="createNewEventButton" onclick="popUpCreationWindow()">+</button>
+    <button id="createdEventsButton" onclick="popUpCreatedEventsWindow(); getCreatedEventList()">Created Events</button>
+    <button onclick="logOut()" class="logout" onmouseover="showTex()" onmouseout="hideTex()" id="logout">
+        <script>
+            document.write(thisUserName);
+        </script>
+    </button>
+</div>
+
+<div class="toolpanel">
+    <div class="clock">
+        <button id="clock" onclick="showFullClock()" style="width : 150px"></button>
+    </div>
+    <div class="btn-group">
+        <button onclick="viewLocation()">LOCATION</button>
+        <!--<button onclick="viewNext()">NXT</button>
+        <button onclick="viewPop()">POP</button>-->
+        <button onclick="refrFesh()">REFRESH</button>
+    </div>
+</div>
+
+<div id="mySidenav" class="sidenav" style="width : 15px">
+    <a href="javascript:void(0)" class="openbtn" id="openbtn" onclick="openNav()">\></a>
+    <div id="SidenavCon" class="sidenavcon" style="display: none">
+        <div class="tab">
+            <button class="tablinks" id="myListButton" onmouseover="openForm(event, 'myListMenu');">MYLIST</button>
+            <button class="tablinks" id="allListButton" onmouseover="openForm(event, 'allListMenu');">ALL EVENTS
+            </button>    <!--於：改名-->
+            <button class="tablinks" id="popularListButton" onmouseover="openForm(event, 'popularListMenu')">POPULAR
+            </button>      <!--於：改名-->
+        </div>
+
+
+        <div id="myListMenu" class="tabcontent">        <!--於：此div原本id是mylist，和下面myList易混淆，修改，74行修改-->
+            <table class="dateFilter">                         <!--於：时间筛选器-->
+                <tr>
+                    <td><label for="fromDate">From：</label></td>
+                    <td><input id="fromDate" type="date" max="" onchange="setMinMaxDate(1,'from')"/></td>
+                </tr>
+                <tr>
+                    <td><label for="toDate">To：</label></td>
+                    <td><input id="toDate" type="date" min="" onchange="setMinMaxDate(1,'to')"/></td>
+                </tr>
+                <script>getDateFilterCookie();</script>
+            </table>
+            <div class="searcharea">
+                <input id="search1" type="text" placeholder="Search..." onkeyup="search(this)">
+            </div>
+            <ul id="showMyList" class="myList"></ul>
+        </div>
+
+        <div id="allListMenu" class="tabcontent">           <!--於：all events list-->
+            <table class="dateFilter">                         <!--於：时间筛选器-->
+                <tr>
+                    <td><label for="fromDate2">From：</label></td>      <!--於：这里的两个id后面要加2-->
+                    <td><input id="fromDate2" type="date" max="" onchange="setMinMaxDate(2,'from')"/></td>
+                </tr>
+                <tr>
+                    <td><label for="toDate2">To：</label></td>
+                    <td><input id="toDate2" type="date" min="" onchange="setMinMaxDate(2,'to')"/></td>
+                </tr>
+            </table>
+            <div class="searcharea">
+                <input id="search2" type="text" placeholder="Search..." onkeyup="search(this)">
+            </div>
+            <ul id="showAllEventsList" class="allEventsList"></ul>
+        </div>
+
+        <div id="popularListMenu" class="tabcontent">           <!--於：popular list-->
+            <table class="dateFilter">                         <!--於：时间筛选器-->
+                <tr>
+                    <td><label for="fromDate3">From：</label></td>        <!--於：这里的两个id后面要加3-->
+                    <td><input id="fromDate3" type="date" max="" onchange="setMinMaxDate(3,'from')"/></td>
+                </tr>
+                <tr>
+                    <td><label for="toDate3">To：</label></td>
+                    <td><input id="toDate3" type="date" min="" onchange="setMinMaxDate(3,'to')"/></td>
+                </tr>
+            </table>
+            <div class="searcharea">
+                <input id="search3" type="text" placeholder="Search..." onkeyup="search(this)">
+            </div>
+            <ul id="showPopularList" class="popularList"></ul>
+        </div>
+        <script>
+            if (thisUserID != undefined && thisUserID != null) {
+                initialiseAll();
+            }
+        </script>
+    </div>
+</div>
+
+</body>
+</html>

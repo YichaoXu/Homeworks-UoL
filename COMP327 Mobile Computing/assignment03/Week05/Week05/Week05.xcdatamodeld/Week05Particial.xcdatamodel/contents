@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="Week05">
+    <entity name="UolEvent" representedClassName="UolEvent" syncable="YES" codeGenerationType="class">
+        <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="UolEvent" positionX="-54" positionY="-9" width="128" height="60"/>
+    </elements>
+</model>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>imgPath</key>
+		<string>https://cgi.csc.liv.ac.uk/~phil/Teaching/COMP327/artwork_images/</string>
+		<key>srcPath</key>
+		<string>https://cgi.csc.liv.ac.uk/~phil/Teaching/COMP327/artworksOnCampus/data.php?class=artworks2</string>
+	</dict>
+</plist>

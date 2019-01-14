@@ -1,0 +1,42 @@
+﻿img {
+    border: none;
+}
+
+.menuBG {
+    width: 100px;
+    overflow: hidden;
+    position: fixed;
+    right: 10px;
+    bottom: 20px;
+    z-index: 10;
+}
+
+#gameMenu {
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.menuButton {
+    width: 90px;
+    height: 33px;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 30px;
+    font-size: 70%;
+    text-align: center;
+    color: #202020;
+    cursor: pointer;
+    background: #FFFFFF center no-repeat;
+
+}
+
+.menuButton:active{
+    background: #202020;
+}
+
+
+
+
+ 

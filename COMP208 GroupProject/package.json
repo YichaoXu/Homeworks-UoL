@@ -1,0 +1,5 @@
+{
+  "name"    : "EventSystem",
+  "version" : "0.3.0",
+  "main"    : "main.js"
+}

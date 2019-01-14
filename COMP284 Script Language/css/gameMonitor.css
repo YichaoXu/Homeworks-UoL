@@ -1,0 +1,236 @@
+body {
+    background: black url(img/bg.png);
+    color: #CCC;
+    user-select: none;
+    font-family: 'Press Start 2P', sans-serif;
+    overflow: hidden
+}
+
+#gameMonitor {
+    margin: 2em auto;
+    position: relative;
+    border: 1px solid grey
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    line-height: 10%;
+    table-layout: fixed;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid #202020;
+}
+
+td:hover{
+    background-color: whitesmoke;
+} td:active{
+    background-color: black;
+}
+
+#userShip {
+    background: url(img/player.png) center center no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+}
+
+#destroy{
+    background: url(img/destroy.png) center center no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.up{
+    /*Do Not rotate*/
+}
+
+.down{
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);-webkit-transform: rotate(180deg);-o-transform: rotate(180deg);-moz-transform: rotate(180deg);
+}
+
+.left{
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);-webkit-transform: rotate(90deg);-o-transform: rotate(90deg);-moz-transform: rotate(90deg);
+}
+
+.right{
+    transform: rotate(270deg);
+    -ms-transform: rotate(270deg);-webkit-transform: rotate(270deg);-o-transform: rotate(270deg);-moz-transform: rotate(270deg);
+}
+
+.asteroid {
+    background: url(img/asteroid.png) center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.robot {
+    background: url(img/robot.png) center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.mine {
+    background: url(img/mine.png) center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.activatedMine{
+    background: url(img/activatedMine.png) center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.explosion{
+    background: url(img/explosion.png) center center no-repeat;
+    background-size: 100% 100%;
+}
+
+#booting {
+    position: absolute;
+    width: 6%;
+    left: 47%;
+    top: 47%
+}
+
+#gameCanvas {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+#startScreen {
+    font-size: 5em;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    vertical-align: center;
+    margin: 0;
+    width: 100%;
+    z-index: 1;
+    position: absolute
+}
+
+#scoreBoard {
+    position: absolute;
+    top: -1.5em;
+    vertical-align: top;
+    line-height: 1.5em;
+    width: 100%;
+    font-size: 1.2em;
+    color: white
+}
+
+#scoreBoard>td{
+    width: 30%;
+}
+
+#gameInstruction {
+    position: absolute;
+    bottom: -1.5em;
+    text-align: right;
+    line-height: 1em;
+    width: 100%;
+    color: #A0A0A0
+}
+
+.hided {
+    display: none;
+}
+
+.flip {
+    -moz-transform:scaleX(-1);
+    -webkit-transform:scaleX(-1);
+    -o-transform:scaleX(-1);
+    transform:scaleX(-1);
+    /*IE*/
+    filter: flipH();
+}
+
+#starBG {
+    background: url("img/bg.png");
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    -webkit-animation: rotate 100s infinite linear;
+    -o-animation: rotate 100s infinite linear;
+    animation: rotate 100s infinite linear;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@media screen and (min-width: 0) and (min-height: 0) {
+    #gameMonitor {
+        width: 512px;
+        height: 384px;
+        line-height: 384px;
+        font-size: 7pt
+    }
+}
+
+@media screen and (min-width: 840px) and (min-height: 550px) {
+    #gameMonitor {
+        width: 640px;
+        height: 480px;
+        line-height: 480px;
+        font-size: 9pt
+    }
+}
+
+@media screen and (min-width: 968px) and (min-height: 646px) {
+    #gameMonitor {
+        width: 768px;
+        height: 576px;
+        line-height: 576px;
+        font-size: 11pt
+    }
+}
+
+@media screen and (min-width: 1096px) and (min-height: 742px) {
+    #gameMonitor {
+        width: 896px;
+        height: 672px;
+        line-height: 672px;
+        font-size: 13pt
+    }
+}
+
+@media screen and (min-width: 1224px) and (min-height: 838px) {
+    #gameMonitor {
+        width: 1024px;
+        height: 768px;
+        line-height: 768px;
+        font-size: 15pt
+    }
+}
+
+@media screen and (min-width: 1480px) and (min-height: 1030px) {
+    #gameMonitor {
+        width: 1280px;
+        height: 960px;
+        line-height: 960px;
+        font-size: 17pt
+    }
+}

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="ipad12_9rounded" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0OO-va-BLD">
+                                <rect key="frame" x="514.5" y="392" width="337" height="240"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="vzY-ue-poh">
+                                        <rect key="frame" x="114" y="18" width="109" height="104"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="104" id="Xsz-Cj-iCO"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="104" id="lrF-rs-MDF"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Please wait a second for application loading" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yt0-oA-XgG">
+                                        <rect key="frame" x="20" y="134" width="297" height="98"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="297" id="2c2-uo-IgS"/>
+                                            <constraint firstAttribute="height" constant="98" id="Aeg-vj-Ogd"/>
+                                        </constraints>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="29"/>
+                                        </variation>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yt0-oA-XgG" secondAttribute="trailing" constant="20" id="0xX-ac-LXR"/>
+                                    <constraint firstAttribute="width" constant="337" id="BpU-hp-K85"/>
+                                    <constraint firstItem="yt0-oA-XgG" firstAttribute="top" secondItem="vzY-ue-poh" secondAttribute="bottom" constant="12" id="ZBa-bJ-5Or"/>
+                                    <constraint firstItem="vzY-ue-poh" firstAttribute="leading" secondItem="0OO-va-BLD" secondAttribute="leading" constant="114" id="a9n-dR-WoV"/>
+                                    <constraint firstItem="yt0-oA-XgG" firstAttribute="leading" secondItem="0OO-va-BLD" secondAttribute="leading" constant="20" id="dMh-3I-pZq"/>
+                                    <constraint firstItem="vzY-ue-poh" firstAttribute="top" secondItem="0OO-va-BLD" secondAttribute="top" constant="18" id="kyj-Ol-FHh"/>
+                                    <constraint firstAttribute="height" constant="240" id="oXg-Qw-XPR"/>
+                                    <constraint firstAttribute="trailing" secondItem="vzY-ue-poh" secondAttribute="trailing" constant="114" id="zLx-jH-xUk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0OO-va-BLD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="YCs-FE-yCo"/>
+                            <constraint firstItem="0OO-va-BLD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="jDO-gT-Zbk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="50.724637681159422" y="374.33035714285711"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Icon" width="48" height="48"/>
+    </resources>
+</document>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>COMP284Assignment03</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="css/gameMonitor.css" media="screen, print" rel="stylesheet" type="text/css"/>
+    <link href="css/gameDialog.css" media="screen, print" rel="stylesheet" type="text/css"/>
+    <link href="css/gameMenu.css" media="screen, print" rel="stylesheet" type="text/css"/>
+    <script src="HelperClasses.js"></script>
+    <script src="GameClass.js"></script>
+    <script>
+        window.onload = function () {
+            new Game({
+                mapSize: {row: 10, column: 10}
+            }).start();
+        };
+    </script>
+</head>
+
+<body>
+<!--Game Screen-->
+<div id="gameMonitor">
+    <div id="scoreBoard"></div>
+    <h1 id="startScreen">COMP284</h1>
+    <div id="gameCanvas"></div>
+    <div id="gameInstruction">
+        Press any key to start configuration game!
+    </div>
+</div>
+
+<!--Alert Dialog-->
+<div class="alertBox centre hided" id="dialogScreen">
+    <h3 id="dialogTitle"></h3>
+    <div class="content"><br>
+        <p id="dialogText_alert"></p></div>
+    <label>&nbsp;<button id="dialogButton">Close</button>
+    </label></div>
+
+<!--Game Menu-->
+<div class="menuBG">
+    <div id="gameMenu"></div>
+</div>
+
+</body>
+
+
+</html>

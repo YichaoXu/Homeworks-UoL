@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Week04" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yQw-MA-SqH">
+                                <rect key="frame" x="17" y="219" width="341.5" height="421"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="nrM-gW-ZtC">
+                                        <rect key="frame" x="0.0" y="28" width="341.5" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nrM-gW-ZtC" id="Xf2-Jq-Gsu">
+                                            <rect key="frame" x="0.0" y="0.0" width="341.5" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="mGg-oo-STe"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="r3O-kn-frw"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Aun-5I-awv">
+                                <rect key="frame" x="84.5" y="142" width="206.5" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="please type a number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ed3-dg-grD">
+                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oO3-2M-4Qf">
+                                        <rect key="frame" x="176.5" y="0.0" width="30" height="30"/>
+                                        <state key="normal" title="Go"/>
+                                        <connections>
+                                            <action selector="clickGoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RPW-oH-6Ta"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0vK-hQ-fIP"/>
+                                    <constraint firstAttribute="width" constant="206.5" id="J0b-HN-VhW"/>
+                                </constraints>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Time Tables" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rzv-xU-UUk">
+                                <rect key="frame" x="120.5" y="70" width="137" height="40"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yQw-MA-SqH" firstAttribute="leading" secondItem="Aun-5I-awv" secondAttribute="trailing" constant="-274" id="18B-Dc-ZLY"/>
+                            <constraint firstItem="yQw-MA-SqH" firstAttribute="top" secondItem="Aun-5I-awv" secondAttribute="bottom" constant="47" id="4uQ-UX-ceF"/>
+                            <constraint firstItem="Aun-5I-awv" firstAttribute="leading" secondItem="Rzv-xU-UUk" secondAttribute="trailing" constant="-173" id="83H-2B-8Ss"/>
+                            <constraint firstItem="Aun-5I-awv" firstAttribute="top" secondItem="Rzv-xU-UUk" secondAttribute="bottom" constant="32" id="Ben-eb-ezK"/>
+                            <constraint firstItem="Aun-5I-awv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NZX-lR-XCs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yQw-MA-SqH" secondAttribute="bottom" constant="27" id="Y1J-QL-cJA"/>
+                            <constraint firstItem="Rzv-xU-UUk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="l2f-Us-Ilx"/>
+                            <constraint firstItem="yQw-MA-SqH" firstAttribute="centerX" secondItem="Aun-5I-awv" secondAttribute="centerX" id="tae-4Z-YwG"/>
+                            <constraint firstItem="Aun-5I-awv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="142" id="uhA-Za-cHw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="inputTextfield" destination="ed3-dg-grD" id="z8C-gn-Kfu"/>
+                        <outlet property="table" destination="yQw-MA-SqH" id="bsA-Xt-pDC"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+</document>
