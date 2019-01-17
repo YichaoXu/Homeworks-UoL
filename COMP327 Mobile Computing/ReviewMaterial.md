@@ -5,32 +5,32 @@
 ### 1.1. Optional:
 
 ##### 1.1.1 Forced unwrapping
-* Symbol:
-    "!" is used to force unwrap an optional value.
-* Situation:
+* Symbol:<br>
+    "!" is used to force unwrapping an optional value.
+* Situation:<br>
     we are certain that an optional value is non-nil or the program is prepared for it to fail.
-* Failure:
+* Failure:<br>
     If the value does evaluate to nil, then the program will crash.
 
 ##### 1.1.2 Optional chaining
-* Symbol:
+* Symbol:<br>
     "?" is used by Optional Chaining.
-* Situation:
+* Situation:<br>
     It is used where it is possible for the variable or constant to have a value of nil.
-* Failure:
+* Failure:<br>
     Optional chaining fails gracefully when the value is nil.
 
 ##### 1.1.2 Casting string to int
 * Casting Methods:
-    - Declaration: `Int.init?(_ description: String)`
-    - Parameter:
-        if `description` is an ASCII representation of a number, the string will be converted to an integer.
+    - Declaration:<br> `Int.init?(_ description: String)`
+    - Parameter:<br>
+        if the argument of `description` is an ASCII representation of a number, the string will be converted to an integer.<br>
         Else, the conversion will fail and return nil.
-    - Return:
+    - Return:<br>
         Because the method will return Nil or Int as result, the compiler will infer the return value as Optional(Int).
-* print method:
+* Print method:<br>
     when printing an Optional value, the word `Optional` will be added in front of it.
-* Convert Optional:
+* Convert Optional: <br>
     Convert `Optional Int` into an `Int` through forced unwrapping
 
 ### 1.2 Protocol
@@ -39,11 +39,9 @@
 It is an effective blueprint of class for a particular task or specific functionality.
 
 ##### 1.2.2 Contents
-It includes the signature of methods, properties and other requirements.
-* The type of each property;
-* The return value of each method
-* The name of the properties and methods;
-* The access modifier of the properties and methods;
+It includes the signature of methods, properties and other requirements:
+- The signature of methods;
+- The definition of properties including the get and set keyword (Read-only or read/write)
 
 
 ##### 1.2.3 Implementation
@@ -57,13 +55,13 @@ It includes the signature of methods, properties and other requirements.
 It is Apple’s mobile payments service designed to make payment in retail stores through Apple's devices;
 
 ##### 2.1.1 Secure Mechanism
-* Devices Account Number:
+* Devices Account Number: <br>
     It is a unique "Token" assigned to each credit or debit card scanned into passbook to protect the card information.
-* Secure Element:
+* Secure Element: <br>
     It is a specially dedicated chip used to store all user's payment information (will never be upload online).   
-* Once time dynamic security code:
+* Once time dynamic security code: <br>
     It is a cryptogram for each transaction to verify the transaction being conducted from a device with a correct device account number.
-* Biometric Authentication:
+* Biometric Authentication: <br>
     Each transaction need be authenticated through touch-ID, Face-ID or PIN.
 
 ###### 2.1.2 Process
@@ -81,10 +79,44 @@ It is Apple’s mobile payments service designed to make payment in retail store
 payment systems are an efficient and effective replacement for cash.
 
 ##### 2.2.2 Issues and example:
-* Delay: There can be payment discard and payment delay.
-* Error: It is possible to accidentally send money to the wrong recipient in the PayPal.
-* Security: PayPal's systems are encrypted, however, there is still hacks and scams.
-* Different Fee: Fees of the PayPal payment are different between the credit card and debit card.
+* Delay: <br>
+There can be payment discard and payment delay.
+* Error: <br>
+It is possible to accidentally send money to the wrong recipient in the PayPal.
+* Security: <br>
+PayPal's systems are encrypted, however, there is still hacks and scams.
+* Different Fee: <br>
+Fees of the PayPal payment are different between the credit card and debit card.
+
+### 2.3 Micro Payment
+
+##### 2.3.1 Introduction
+* Description: <br>
+Financial transactions involving very small sums of money;
+* Motivation: <br>
+Transaction fee of the standard payment systems for small payments is significant;
+
+##### 2.3.1 Types
+* Pre-paid accounts: <br>
+MicroPayments can be drawn from this pre-paid account.
+* Accumulated Balance Payment Systems:<br>
+Accumulate small charges, then bill periodically
+
+### 2.4 Premium SMS based transactional payments
+
+##### 2.4.1 Introduction
+* Description: <br>
+Payment via an SMS message to a short code
+* Properties:
+    - It can pay charge through the phone-bill.
+    - It is suitable for phone-based goods.
+
+#### 2.4.2 Challenges
+* Poor Reliability;
+* Slow Speed;
+* High Setup and Running Costs;
+* Low Pay-out Rates (<30%);
+* Low Follow-on Sales.
 
 
 ## 3. Question about Mobile Communication
@@ -150,23 +182,27 @@ payment systems are an efficient and effective replacement for cash.
 ### 3.3 Communication Switching
 
 ##### 3.3.1 Circuits Switching:
-* Advantages:
-    - Establish a dedicated communication channel through a network before they communicate;
-    - This communication channel is durable and uses the full bandwidth (appearing as a direct connection between two nodes).
+Establish a dedicated communication channel through a network before they communicate;
+
+* Advantages: <br>
+The communication appears as a direct connection between two nodes:
+    - It is durable;
+    - uses the full bandwidth
 
 
 * Disadvantages:
-    - There may not be sufficient circuits for a number of users;
-    - The expend of the connection may be time-based and expensive.
+    - The circuits may be insufficient for all users;
+    - The charge will be time-based (expensive).
 
 ##### 3.3.2 Package Switching:
-* Advantages:
-    - Communicate through individual packets with extra header information for routing and packet reassembling;
-    - It is more efficient to use network resources.
+Communicate through individual packets with extra header information for routing and packet reassembling;
+
+* Advantages: <br>
+    It is more efficient to use network resources.
 
 
 * Disadvantages
-    - Traffic congestion may cause the packet loss;
+    - Network congestion may cause the packet loss (causing a low quality to communicate);
     - The dropped packet will only be resent when it is overtime.
 
 
@@ -183,24 +219,32 @@ payment systems are an efficient and effective replacement for cash.
     - t: the number of transceivers.
 
 ##### 3.4.2 Text
-* ASCII: 7-bits;
-* Emoji: 17-bits;
-* Octet: 8-bits.
+* Emoji: 16-bits;
+* Octet: 8-bits;
+* ASCII: 7-bits.
 
 
 ### 3.5 Handover
-It is the process of transferring a connection from one channel to another; Both of the hard and soft handovers are methods for handover.
+It is the process of transferring a connection from one channel to another;<br>
+Both of the hard and soft handovers are methods for handover. <br>
+Phone, old and new cells determine if and when to handover.
 
-##### 3.5.1 Hard Handover
-* Description:
+##### 3.5.1 Due to:
+* Change of user behaviour;
+* Location of a phone is changed;
+* Interference between channels occurs;
+* Signal becomes degraded due to local conditions;
+* Current cell is exhausted, and there is another available cell.
+
+##### 3.5.2 Hard Handover
+* Description: <br>
     With hard handover, the channel in the source cell is released before the channel in the target cell is engaged.
 * Properties:
     - The call will fail when the new cell fails during handover.
-    - Involves the radio tuner using the alternative code system.
-* Usage: GSM.
+    - It is used by GSM, and typically involves the radio tuner using an alternative coding system for each connection, but the same frequency.
 
-##### 3.5.2 Soft Handover
-* Description:
+##### 3.5.3 Soft Handover
+* Description:<br>
     With soft handover, the old channel is only released when the new connection is considered reliable.
 * Properties:
     - The device may hold two channels simultaneously until there is no advantage in using two.
@@ -209,13 +253,46 @@ It is the process of transferring a connection from one channel to another; Both
 
 
 ### 3.6 Wi-Fi and 3G
-##### 3.6.1 Comparison
+
+##### 3.6.1 Tech:
+* 2G: GSM
+* 2.5G: GPRS (Improvement of GSM)
+* 3G: IMT-2000 (GSM EDGE, UMTS, CMDA, HSPA)
+* 4G: LTE (HSPA+)
+*
+##### 3.6.2 Comparison
 * Wi-Fi is faster than 3G in general;
 * Wi-Fi in smaller venues where many users share single ADSL may be slower than 3G or 4G.
-    - bandwidth is shared;
-    - wireless access point need to coordinate communication from multiple users simultaneously;
-    - wireless access point is not as power as the cell tower.
+    - Bandwidth is shared;
+    - The wireless access point is not as powerful as the cell tower.
+    - and it needs to coordinate communication from multiple users simultaneously;
 
+### 3.7 WAP
+
+##### 3.7.1 Introduction
+* Description: <br>
+Wireless Application Protocol is An open international standard to support access to the Mobile Web.
+##### 3.7.2 Deck of Cards Metaphor
+* Description: <br>
+It is a model used in WML for content display and navigation.
+    - Card: A dialog-based interaction with many options;
+    - Deck: Many cards bundled together;
+
+* Motivation: <br>
+Deck can be sent in one transmission so that the time and delays could be reduced.
+
+##### 3.7.3 Issue
+* Criticisms:
+    - WML language
+    - Unclear requirements
+    - Constrained User Interface
+    - Lack of Good Authoring Tools
+
+* Why fail:
+    - Technical limitations due to GSM;
+    - Poor site design (Bad user experiment);
+    - Poor content and management
+    - Device limitations
 
 
 ## 4. Question about HCI
@@ -233,11 +310,22 @@ HCI traditionally refers to the processes and models for the design of the opera
     - useful: accomplishes the required task ;
     - usable: easy and reliable to use;
     - used: enriches the user experience.
+* and to be adopted, a system should be:
+    - fit for purpose;
+    - provide some value to the customer over the usage cost (both effort and financial).
 
-##### 4.1.2 Heckel’s law
-* Description:
+##### 4.1.2 Apple's Principle:
+* Responsiveness: <br>
+    Actions should lead to a direct result in a reasonable time;
+* Permissiveness: <br>
+    Users should be able to do anything which is reasonable;
+* Consistency: <br>
+    Mechanisms should be used in the same way in wherever they occur.
+
+##### 4.1.3 Heckel’s law
+* Description: <br>
     The quality of the user interface of an appliance is relatively unimportant in determining its adoption if the perceived value is high.
-* Example:
+* Example: <br>
     The physical keyboards on a mobile phone often too small to be used conventionally, but it makes the typing simpler (eg: For email).
 
 ### 4.2  Virtual Keyboard
@@ -250,9 +338,9 @@ Present a keyboard on the screen, which the user can then interact with.
 * The resistive screen requires its user to accurately hit the correct location.
 
 ##### 4.2.3 Auto-correct
-* Description:
+* Description: <br>
     It is the predictive texting and dictionary-based function adopted from SMS application to predicate what did user want to type and to offer the completed words.
-* Motivation:
+* Motivation: <br>
     The use of a capacitance-based screen causes a higher probability for the typo.
 
 
@@ -269,6 +357,9 @@ Systems are often referred to as Location-Aware
 * Services may be discovered locally and then use a local PAN.
 
 ##### 5.1.3 Application
-* Navigation: The Google Map navigate user from source to destination.
-* Context Change: The "Trip Advisor" can provide information about local hotel and restaurant based on the user's location.
-* Personal Emergency: When the cad is broken down, the application can send a message with a precise GPS location to alert the emergency services.
+* Navigation: <br>
+The Google Map navigate user from source to destination.
+* Context Change: <br>
+The "Trip Advisor" can provide information about local hotel and restaurant based on the user's location.
+* Personal Emergency: <br>
+When the cad is broken down, the application can send a message with a precise GPS location to alert the emergency services.
