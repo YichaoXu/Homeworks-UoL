@@ -78,6 +78,22 @@ It is Apple’s mobile payments service designed to make payment in retail store
 ##### 2.2.1 Introduction
 payment systems are an efficient and effective replacement for cash.
 
+##### 2.2.2 Scenario:
+* Payer opens P2P app and pick the payee;
+* And tap out the amount of money;
+* Application authenticate the user by PIN/Face/Touch-ID;
+* Payee receives a notification about the transaction;
+* and the payee can leave the money in the account or send it to the bank account.
+
+##### 2.2.3 Features:
+* Security:
+    - Transfer of data is encrypted;
+    - Authentication is required for accessing system;
+* Payment:
+    - Some systems notify for payment;
+    - Payment is usually rapid;
+    - Fees depends on the source of payment.
+
 ##### 2.2.2 Issues and example:
 * Delay: <br>
 There can be payment discard and payment delay.
@@ -85,8 +101,6 @@ There can be payment discard and payment delay.
 It is possible to accidentally send money to the wrong recipient in the PayPal.
 * Security: <br>
 PayPal's systems are encrypted, however, there is still hacks and scams.
-* Different Fee: <br>
-Fees of the PayPal payment are different between the credit card and debit card.
 
 ### 2.3 Micro Payment
 
@@ -261,7 +275,7 @@ Phone, old and new cells determine if and when to handover.
 * 4G: LTE (HSPA+)
 *
 ##### 3.6.2 Comparison
-* Wi-Fi is faster than 3G in general;
+* Wi-Fi (433Mbit/s) is faster than 3G even 4G(20Mbit/s) in general;
 * Wi-Fi in smaller venues where many users share single ADSL may be slower than 3G or 4G.
     - Bandwidth is shared;
     - The wireless access point is not as powerful as the cell tower.
@@ -275,11 +289,11 @@ Wireless Application Protocol is An open international standard to support acces
 ##### 3.7.2 Deck of Cards Metaphor
 * Description: <br>
 It is a model used in WML for content display and navigation.
-    - Card: A dialog-based interaction with many options;
+    - Card: A dialogue-based interaction with many options;
     - Deck: Many cards bundled together;
 
 * Motivation: <br>
-Deck can be sent in one transmission so that the time and delays could be reduced.
+A deck can be sent in one transmission so that the time and delays could be reduced.
 
 ##### 3.7.3 Issue
 * Criticisms:
@@ -348,18 +362,20 @@ Present a keyboard on the screen, which the user can then interact with.
 
 ### 5.1 Spatial Context Aware System
 
-##### 5.1.1 Introduction
-Systems are often referred to as Location-Aware
+##### 5.1.1 Relevance
+* Location Awareness;
+* Orientation;
+* Nearby Object.
 
-##### 5.1.2 Relevance of the Devices
-* Services can be ordered spatially in a list.
-* P2P services can relate the proximity of users to a service.
-* Services may be discovered locally and then use a local PAN.
+##### 5.1.2 Possible
+* Ordering the local services by distances;
+* Discovering local service or objects;
+* Providing service based on location.
 
 ##### 5.1.3 Application
 * Navigation: <br>
-The Google Map navigate user from source to destination.
+The Google Map navigates user from source to destination.
 * Context Change: <br>
-The "Trip Advisor" can provide information about local hotel and restaurant based on the user's location.
+The Google Map provides user a best route based on the current traffic.
 * Personal Emergency: <br>
 When the cad is broken down, the application can send a message with a precise GPS location to alert the emergency services.

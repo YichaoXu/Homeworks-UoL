@@ -61,6 +61,112 @@ Poker planning is a cost estimation technique:
     - It can help avoid anchoring.
     - It less was less optimistic and more accurate than the simple combination of individual estimates.
 
+### 2.2 Pair Programming：
+
+#### 2.2.1 Introduction
+Two programmers work together to complete the programming task:
+* Driver writes the code;
+* Reviewer reviews the code (makes suggestion and comments on the approach)
+* The two programmer will periodically swap the role.
+
+#### 2.2.2 Benefits
+* Reduce risk
+    - Reduce the number of a design error or serious flaw;
+    - Reduce the probability of structurally unsound.
+* Improve the code quality through code reviewing
+* Improve the code ownership.
+    - Spreads the responsibility of code;
+    - The partner can replace the developer at any time.
+
+#### 2.2.3 Research Finding:
+* decreases 15~30% project developing times;
+    - Normally it can decrease to 84% of the previous time;
+    - For the juniors, it may be increased to 110%;
+    - The simpler tasks are, the more time can be reduced.
+* increases 15~60% programmer working hours;
+* increases 15% correctness
+    - important for critical quality criteria project;
+    - Found 7% errors overall and 73% errors for the juniors;
+    - The more complex problem is, the higher the code quality becomes.  
+* Conclusion:
+    - it seems to be able to deliver code slightly faster, of higher quality but at considerable cost;
+    - However, the quality Improvement earlier can save time later on.
+    - Then, it may be hard to evaluate in a short time.
+
+#### 2.2.4 Dependency Graph
+* Control Line
+* def-order dependency
+
+### 2.3 Scrum
+
+#### 2.3.1 Introduction
+* Description: <br>
+In the SCRUM (The name comes from the game of rugby), The team work together and do the development in a series of development steps called sprints.
+
+* Daily SCRUM: <br>
+This is a short meeting in which all developers answer the following questions:
+    - What have you done since yesterday?
+    - What are you planning to do today?
+    - Any impediments/stumbling blocks?
+
+#### 2.3.2 Sprint
+* Description: <br>
+The SCRUM the lifecycle splits the development into a series of efforts called Sprints which
+    - lasts around 1 to 4 weeks;
+    - is preceded by a sprint planning meeting.
+
+* Sprint planning:
+It is a meeting for a sprint to decide the scope of work and the required time of it. Then, this work is added to the sprint backlog.
+    - The amount of work is carefully selected so that it is enough to fill the sprint;
+    - It is done by evaluating the workload of previous sprints and the projects-velocity.
+    - The uncompleted work in the sprint backlog will be returned to the product backlog.
+
+* Burn down chart:
+the burn-down chart is used to measure the progress of the project ;
+
+#### 2.3.3 Product Backlog
+* Description: <br>
+A document contains all work to complete the project;
+
+* Item Types: <br>
+The backlog can include anything
+    - from product features
+    - to debugging tasks
+    - and technical tasks.
+* Item Content: <br>
+Each item in the product backlog has
+    - Description/specification;
+    - Score in terms of its business value;
+    - Estimation by the development team;
+
+
+### 2.4 XP
+
+#### 2.4.1 user stories
+* Description: <br>
+It is a set of descriptions of functionality which have value to the end user.
+    - It is easier for end customers to get to understand;
+    - It provides an easy communication channel between the end user and the development team.
+
+* Properties:
+    - Short enough so that easy to estimate and test;
+    - Independent from one another so they can be implemented separately.
+
+
+#### 2.4.2 User Case descriptions
+
+* Description: <br>
+It has more structure and defined in more detail than user stories.
+    - "User case descriptions" provide more detail to the developer (such as how UI work)
+    - It makes reusability can be easier implements by the conception of inclusion in the UCD.
+
+* Added Details:
+    - UC exceptions (describe what happens in exceptional conditions);
+    - Pre-conditions before the case can happen;
+    - And what will happen afterwards?
+
+* In practice:
+user stories are easier for end customers to get to grips with and provide an easy communication channel between the end user and development team. User case descriptions provide more detail to the developer. Without user case descriptions details such as how the UI works in detail could be lost. User cases also have the concept of inclusion which makes it easier to see re-use within the development.
 
 ## 3. Question about Estimation of the code quality
 
