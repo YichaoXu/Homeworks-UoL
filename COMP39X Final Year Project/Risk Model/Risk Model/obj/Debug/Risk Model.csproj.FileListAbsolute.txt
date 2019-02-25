@@ -1,0 +1,7 @@
+C:\Users\Sam Xu\Documents\GitHub\Lecture\COMP39X Final Year Project\Risk Model\Risk Model\bin\Debug\Risk Model.exe.config
+C:\Users\Sam Xu\Documents\GitHub\Lecture\COMP39X Final Year Project\Risk Model\Risk Model\bin\Debug\Risk Model.exe
+C:\Users\Sam Xu\Documents\GitHub\Lecture\COMP39X Final Year Project\Risk Model\Risk Model\bin\Debug\Risk Model.pdb
+C:\Users\Sam Xu\Documents\GitHub\Lecture\COMP39X Final Year Project\Risk Model\Risk Model\obj\Debug\Risk Model.csprojAssemblyReference.cache
+C:\Users\Sam Xu\Documents\GitHub\Lecture\COMP39X Final Year Project\Risk Model\Risk Model\obj\Debug\Risk Model.csproj.CoreCompileInputs.cache
+C:\Users\Sam Xu\Documents\GitHub\Lecture\COMP39X Final Year Project\Risk Model\Risk Model\obj\Debug\Risk Model.exe
+C:\Users\Sam Xu\Documents\GitHub\Lecture\COMP39X Final Year Project\Risk Model\Risk Model\obj\Debug\Risk Model.pdb
