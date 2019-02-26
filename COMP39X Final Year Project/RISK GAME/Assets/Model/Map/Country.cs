@@ -2,29 +2,30 @@
 
 namespace Risk.Model.Rule {
     public class Country {
+        
         public readonly int id;
         public readonly string name;
-        private int armiesSize;
+        public int armiesSize { get; private set; }
         private string ownerName;
 
         public Country(JSONNode rawData) {
             id = rawData["id"];
             name = rawData["name"];
-            armiesSize = 0;
+            armiesSize = 2; //TODO Finish 
         }
 
-        public void Reinforcement(int number) {
+        public bool Reinforcement(int number) {
             armiesSize += number;
+            return true;
         }
 
-        public bool UnderAttack(Country attacker, int attackerSize) {
-            if (attackerSize > armiesSize) return false;
-            
-            if (attackerSize < )
+        public bool RemoveArmies(int number) {
+            if (armiesSize <= number) 
+                armiesSize = 0;
+            else 
+                armiesSize -= number;
+            return true;
         }
     }
 
-    class Battle {
-        
-    }
 }

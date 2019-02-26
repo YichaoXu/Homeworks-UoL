@@ -1,0 +1,134 @@
+﻿using WPMF;
+using UnityEngine;
+using System.Collections.Generic;
+
+
+namespace Risk.Controller.Map.Helper {
+    public abstract class AbstractMapDecorator{
+        protected WorldMap2D mapView;
+
+        public string highlightedCountryName { protected set; get; }
+        public List<string> highlightedNeighboursNameList { protected set; get; }
+
+        public Color colorForEnemy { protected get; set; }
+        public Color colorForPlayer { protected get; set; }
+        public Color colorForAttackTrajectory { protected get; set; }
+        public Color colorForPredicatedTrajectory { protected get; set; }
+        public Color colorForHighlightedCountry { protected get; set; }
+        public Color colorForHighlightedCountryNeighbours { protected get; set; }
+
+        protected GameObject predicatedTrajectory;
+        protected List<GameObject> attackTrajectoriesList;
+
+        protected AbstractMapDecorator(AbstractMapDecorator previous) {
+            mapView = previous.mapView;
+
+            highlightedCountryName = previous.highlightedCountryName;
+            highlightedNeighboursNameList = previous.highlightedNeighboursNameList;
+            colorForEnemy = previous.colorForEnemy;
+            colorForPlayer = previous.colorForPlayer;
+            colorForAttackTrajectory = previous.colorForAttackTrajectory;
+            colorForPredicatedTrajectory = previous.colorForPredicatedTrajectory;
+            colorForHighlightedCountry = previous.colorForHighlightedCountry;
+            colorForHighlightedCountryNeighbours = previous.colorForHighlightedCountryNeighbours;
+
+            predicatedTrajectory = previous.predicatedTrajectory;
+            attackTrajectoriesList = previous.attackTrajectoriesList;
+        }
+
+        protected AbstractMapDecorator(WorldMap2D map) {
+            // 1. Initiate the fields.
+            mapView = map;
+            mapView.showCities = false;
+            highlightedCountryName = null;
+            highlightedNeighboursNameList = new List<string>();
+
+            // 2. Set color
+            // 2.1 Set default color for the players.
+            colorForPlayer = new Color(245f / 255f, 245f / 255f, 245f / 255f);
+            colorForEnemy = new Color(112f / 255f, 128f / 255f, 144f / 255f);
+            // 2.2 Set default color for Trajectory line.
+            colorForPredicatedTrajectory = new Color(0f / 255f, 112f / 255f, 187f / 255f);
+            colorForAttackTrajectory = new Color(128f / 255f, 0f, 0f);
+            // 2.3 Set default color for highlighted country and its neighbours.
+            colorForHighlightedCountry = new Color(255f / 255f, 0f, 0f);
+            colorForHighlightedCountryNeighbours = new Color(211f / 255f, 211f / 255f, 211f / 255f);
+
+            predicatedTrajectory = null;
+            attackTrajectoriesList = new List<GameObject>();
+        }
+
+        public bool SetCountryLabel(string countryName, string labelStr) {
+            return mapView.SetCountryLabel(countryName, labelStr);
+        }
+
+        public void UpdateCountryLabel() {//TODO FINISH OPTIMISE
+            
+            mapView.RedrawMapLabels();
+        }
+
+        public bool HighlightCountry(string targetCountryName, List<string> neighboursNameList) {
+            if (targetCountryName == null) return false;
+            mapView.ToggleCountrySurface(targetCountryName, true, colorForHighlightedCountry);
+            highlightedCountryName = targetCountryName;
+            neighboursNameList.ForEach((countryName) => {
+                mapView.ToggleCountrySurface(countryName, true, colorForHighlightedCountryNeighbours);
+            });
+            highlightedNeighboursNameList = neighboursNameList;
+            return true;
+        }
+
+        public abstract bool CancelHighlight();
+
+        public bool ShowPredicatedTrajectoryFromHighlightedCountry(string toNeighbourName) {
+            if (highlightedCountryName == null) return false;
+            if (!highlightedNeighboursNameList.Contains(toNeighbourName)) return false;
+            HidePredicatedTrajectory();
+            var start = mapView.GetCountryCentreVector(highlightedCountryName);
+            var end = mapView.GetCountryCentreVector(toNeighbourName);
+            const float arcElevation = 0.05f, duration = 0.2f, lineWidth = 1.0f, fadeAfter = 0.0f;
+            predicatedTrajectory = mapView.AddLine(start, end, colorForPredicatedTrajectory, arcElevation, duration,
+                lineWidth, fadeAfter);
+            return true;
+        }
+
+        public bool HidePredicatedTrajectory() {
+            if (predicatedTrajectory == null) return false;
+            Object.Destroy(predicatedTrajectory);
+            return true;
+        }
+        
+        public bool AddAttackTrajectoryFromHighlightedCountry(string toNeighbourName) {
+            if (highlightedCountryName == null) return false;
+            if (!highlightedNeighboursNameList.Contains(toNeighbourName)) return false;
+            var start = mapView.GetCountryCentreVector(highlightedCountryName);
+            var end = mapView.GetCountryCentreVector(toNeighbourName);
+            var newTrajectory = mapView.AddLine(
+                start: start, end: end,
+                color: colorForAttackTrajectory,
+                arcElevation: 0.0f,
+                duration: 0.5f,
+                lineWidth: 0.0f,
+                fadeOutAfter: 1.5f
+            );
+            attackTrajectoriesList.Add(newTrajectory);
+            return true;
+        }
+
+        public bool HideLastAttackTrajectory() {
+            if (attackTrajectoriesList.Count == 0) return false;
+            int lastTrajectoryIndex = attackTrajectoriesList.Count - 1;
+            GameObject lastTrajectory = attackTrajectoriesList[lastTrajectoryIndex];
+            attackTrajectoriesList.RemoveAt(lastTrajectoryIndex);
+            Object.Destroy(lastTrajectory);
+            return true;
+        }
+
+        public bool HideAllAttackTrajectory() {
+            if (attackTrajectoriesList.Count == 0) return false;
+            attackTrajectoriesList.ForEach(Object.Destroy);
+            return true;
+        }
+
+    }
+}

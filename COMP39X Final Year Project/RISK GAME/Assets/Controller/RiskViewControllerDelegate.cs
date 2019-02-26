@@ -10,22 +10,27 @@ public class RiskViewControllerDelegate : MonoBehaviour {
     private WorldMap2D mapView;
     [SerializeField] private Text turnText;
     [SerializeField] private Text phaseText;
+    [SerializeField] private Text deployingText;
     [SerializeField] private GameObject resultCanvas;
     [SerializeField] private GameObject settingCanvas;
-
+    [SerializeField] private GameObject deployingCanvas;
+    
     private AbstractRiskMapController mapController;
-    private UIComponentControllerInterface componentController;
+    private AbstractUIComponentController componentController;
 
     // The initiation method in Unity GameObject
     void Start() {
-        mapView = WorldMap2D.instance;
-        mapController = new MapIgnoreController(mapView);
-        componentController = new RiskUIComponentController {
+        var uiComponents = new UnityUIComponents {
             gameTurnTitle = turnText,
             gamePhaseTitle = phaseText,
+            deployingTitle = deployingText,
             gameResultPanel = resultCanvas,
-            gameSettingPanel = settingCanvas
+            gameSettingPanel = settingCanvas,
+            deployingPanel = deployingCanvas
         };
+        mapView = WorldMap2D.instance;
+        mapController = new MapInitiateController(mapView);
+        componentController = new UIComponentInitiateController(uiComponents);
 
         mapView.OnCountryClick += ClickOnCountry;
         mapView.OnCountryEnter += MoveOnCountry;
@@ -38,20 +43,19 @@ public class RiskViewControllerDelegate : MonoBehaviour {
     }
 
     public void ClickNextTurnButton() {
-        mapController.MoveToNextTurn();
-        componentController.UpdateTurnText();
-        componentController.UpdatePhaseText("Initiation");
-        mapController = new MapIgnoreController(mapController);
+        mapController = new MapInitiateController(mapController);
+        componentController = new UIComponentInitiateController(componentController);
     }
 
     public void ClickAttackButton() {
         mapController = new MapAttackController(mapController);
-        componentController.UpdatePhaseText("Attack");
+        componentController = new UIComponentAttackController(componentController);
+
     }
 
     public void ClickRecruitButton() {
         mapController = new MapRecruitController(mapController);
-        componentController.UpdatePhaseText("Recruit");
+        componentController = new UIComponentRecruitController(componentController);
     }
 
     public void ClickExitButton() {
@@ -74,8 +78,18 @@ public class RiskViewControllerDelegate : MonoBehaviour {
         componentController.HandleSettingButtonClick();
     }
 
+    public void SetScrollerBar(float number) {
+        ((UIComponentRecruitController) componentController).updateArmiesSize(number);
+    }
+
+    public void ClickConfirmButton() {
+        ((UIComponentRecruitController) componentController).HandleConfirmButtonClick();
+        ((MapRecruitController)mapController).UpdateCountryArmies();
+    }
+
     private void ClickOnCountry(int countryIndex, int regionIndex) {
         var countryName = mapView.countries[countryIndex].name;
+        componentController.HandleOnCountryClick(countryName);
         mapController.HandleOnCountryClick(countryName);
     }
 
@@ -90,7 +104,6 @@ public class RiskViewControllerDelegate : MonoBehaviour {
     }
 
     private void PressEscape() {
-        Debug.Log("Press");
         mapController.HandleEscapeKeyPress();
     }
 }
