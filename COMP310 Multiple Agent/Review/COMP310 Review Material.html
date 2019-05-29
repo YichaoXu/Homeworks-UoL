@@ -1,0 +1,593 @@
+<!DOCTYPE html><html><head>
+      <title>COMP310 Review Material</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///C:\Users\Sam Xu\.atom\packages\markdown-preview-enhanced\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <h2 class="mume-header" id="1-chapter-02-intelligent-agent">1. Chapter 02 Intelligent Agent</h2>
+
+<h4 class="mume-header" id="11-definition">1.1 Definition</h4>
+
+<h5 class="mume-header" id="111-overview">1.1.1 Overview</h5>
+
+<p>An agent is a computer system situated in an environment, which is able to autonomously act in the environment to meet its delegated objectives;</p>
+<h5 class="mume-header" id="112-agent-and-object">1.1.2 Agent and Object</h5>
+
+<ul>
+<li>Agents are autonomous;</li>
+<li>Agents are smart;</li>
+<li>Agents are active;</li>
+</ul>
+<h5 class="mume-header" id="113-agent-and-expert-system">1.1.3 Agent and Expert System</h5>
+
+<ul>
+<li>Expert System typically focus on a special domain;</li>
+<li>Agent is situated in an environment;</li>
+</ul>
+<h5 class="mume-header" id="114-agent-and-ai">1.1.4 Agent and AI</h5>
+
+<ul>
+<li>Agent is not designed to solve all the problems of AI;</li>
+</ul>
+<h4 class="mume-header" id="12-environment">1.2 Environment</h4>
+
+<h5 class="mume-header" id="121-fully-observable-vs-partially-observable">1.2.1 Fully observable vs partially observable</h5>
+
+<ul>
+<li>Fully Observable: Complete, accurate, up-to-date information about the environment can be obtained;</li>
+<li>Partially Observable: Complete information is inaccessible;</li>
+</ul>
+<h5 class="mume-header" id="122-deterministic-vs-non-deterministic">1.2.2 Deterministic vs non-deterministic</h5>
+
+<ul>
+<li>Deterministic: Action has a single guaranteed effect;</li>
+<li>Non-deterministic: Action may cause an uncertain effect.</li>
+</ul>
+<h5 class="mume-header" id="123-static-vs-dynamic">1.2.3 Static vs dynamic</h5>
+
+<ul>
+<li>Static: The environment will not be changed before the agent act;</li>
+<li>Dynamic: The environment may be changed before the agent act.</li>
+</ul>
+<h5 class="mume-header" id="124-discrete-vs-continuous">1.2.4 Discrete vs continuous</h5>
+
+<ul>
+<li>Discrete: Agent has finite actions in the environment;</li>
+<li>continuous: Agent has infinite actions in the environment;</li>
+</ul>
+<h5 class="mume-header" id="123-episodic-vs-non-episodic">1.2.3 Episodic vs non-episodic</h5>
+
+<ul>
+<li>Episodic: Agent&apos;s current decision will not affect its future decision</li>
+<li>Non-Episodic: Agent&apos;s current decision will affect its future decision;</li>
+</ul>
+<h5 class="mume-header" id="123-real-time">1.2.3 Real Time</h5>
+
+<ul>
+<li>Real Time: Time will affect the evaluation of an agent&apos;s performance;</li>
+</ul>
+<h4 class="mume-header" id="13-properties">1.3 Properties</h4>
+
+<h5 class="mume-header" id="131-reactivity">1.3.1 Reactivity</h5>
+
+<ul>
+<li>A reactive system keeps on interacting with the environment, and responds to changes occurred;</li>
+</ul>
+<h5 class="mume-header" id="132-proactiveness">1.3.2 Proactiveness</h5>
+
+<ul>
+<li>A proactive system takes an initiative goal, and decides action through both of the goal and events;</li>
+</ul>
+<h5 class="mume-header" id="133-social-ability">1.3.3 Social Ability</h5>
+
+<ul>
+<li>Ability to interact with other agents by cooperation, coordination, and negotiation.</li>
+<li>cooperation: working together as a team to achieve a shared goal.</li>
+<li>Coordination: managing the interdependencies between activities.</li>
+<li>Negotiation: reaching agreements on common interest.</li>
+</ul>
+<h5 class="mume-header" id="134-other-properties">1.3.4 Other Properties</h5>
+
+<p>Mobility, Rationality, Veracity, Benevolence, Learning/adaption;</p>
+<h4 class="mume-header" id="15-utility">1.5 Utility</h4>
+
+<h6 class="mume-header" id="151-expected-utility">1.5.1 Expected Utility</h6>
+
+<ul>
+<li>Definition: Expected utility is the expected value of an agent to obtain in an environment;</li>
+<li>&#x8BA1;&#x7B97;&#x516C;&#x5F0F;:<img src="2.1.1.png" alt="EU&#x8BA1;&#x7B97;&#x516C;&#x5F0F;"></li>
+<li>Calculation: multiply the value to the agent of each possible outcome of the action by the probability of that outcome occurring and then summing those numbers;</li>
+<li>Optional Agent: The optimal agent in an environment is the agent with maximal expected utility;</li>
+<li>Example:<img src="2.1.2.png" alt="Example"></li>
+</ul>
+<h6 class="mume-header" id="152-predicate-task-specification">1.5.2 Predicate Task Specification</h6>
+
+<ul>
+<li>Definition: A special case of assigning utilities to histories is to assign 0 (false) or 1 (true) to a run.</li>
+<li>How to: If a run is assigned 1, then the agent succeeds on that run, otherwise it fails.</li>
+</ul>
+<h6 class="mume-header" id="153-achievement-and-maintenance-tasks">1.5.3 Achievement and Maintenance Tasks</h6>
+
+<ul>
+<li>An achievement task is specified by a set G of &#x201C;good&#x201D; or &#x201C;goal&#x201D; states: G &#x2286; E;
+<ul>
+<li>The agent succeeds if it is guaranteed to bring about at least one of these states</li>
+</ul>
+</li>
+<li>A maintenance goal is specified by a set B of &#x201C;bad&#x201D; states B &#x2286; E.
+<ul>
+<li>The agent succeeds in a particular environment if it manages to avoid all states in B</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="2-chapter-04-practical-reasoning-agents">2. Chapter 04 Practical Reasoning Agents</h2>
+
+<h4 class="mume-header" id="21-definition">2.1 Definition</h4>
+
+<p>Practical reasoning is reasoning directed towards actions basing on agent&apos;s desires, values and believes;</p>
+<h4 class="mume-header" id="22-component">2.2 Component</h4>
+
+<ul>
+<li>Deliberation:
+<ul>
+<li>what state of affairs we want to achieve;</li>
+<li>Outputs: intentions.</li>
+</ul>
+</li>
+<li>Means-ends reasoning:
+<ul>
+<li>how to achieve these states of affairs;</li>
+<li>outputs: plans.</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="23-blocksworld">2.3 Blocksworld</h4>
+
+<h5 class="mume-header" id="231-predicate">2.3.1 Predicate</h5>
+
+<ul>
+<li>On(x,y): Object X on the top of object y;</li>
+<li>OnTable(x): Object X is on the table;</li>
+<li>Clear(x): Noting is on the top of object x;</li>
+<li>Holding(x): arm is holding x;</li>
+</ul>
+<h5 class="mume-header" id="232-action">2.3.2 Action</h5>
+
+<ul>
+<li>Stack(x, y): Place an object on the top of another object;</li>
+<li>Unstack(x, y): Pick an object up from the top of another object;</li>
+<li>Pickup(x): Pick up an object from the table;</li>
+<li>Putdown(x): Putdown an object to the table;</li>
+</ul>
+<h4 class="mume-header" id="24-formal-representation">2.4 Formal Representation</h4>
+
+<h5 class="mume-header" id="241-action">2.4.1 Action</h5>
+
+<ul>
+<li>preconditions &#x1D443;&#x1D6FC;&#x1D456; ,</li>
+<li>delete list &#x1D437;&#x1D6FC;&#x1D456;,</li>
+<li>add list &#x1D434;&#x1D6FC;&#x1D456;;<br>
+<img src="2.4.1.png" alt="formula"></li>
+</ul>
+<h5 class="mume-header" id="242-problem">2.4.2 Problem</h5>
+
+<ul>
+<li>B0 is the set of initial beliefs;</li>
+<li>Ac is the set of actions (changes the beliefs);</li>
+<li>I is a goal (or intention);<br>
+<img src="2.4.2.png" alt="formula"></li>
+</ul>
+<h5 class="mume-header" id="243-plans">2.4.3 Plans</h5>
+
+<ul>
+<li>&#x5B9A;&#x4E49;: a sequence of actions</li>
+<li>&#x53EF;&#x63A5;&#x53D7;&#x7684;Plan: A plan is said to be acceptable if and only if, each action will have true pre-condition;<br>
+<img src="2.4.3.png" alt="formula"></li>
+</ul>
+<h5 class="mume-header" id="244-implementation">2.4.4 Implementation</h5>
+
+<ul>
+<li>see(): Observe the environment to generate percepts about it;</li>
+<li>brf(): the belief revision function (From percepts to believes)</li>
+<li>Options(): Generate all possible intentions;</li>
+<li>filter(): decide the final intention;</li>
+<li>sound(): check if the original plan is a correct for current Believes and intentions;</li>
+<li>plan(): Use mean-ends reasoning to produce a plan for the intention;</li>
+<li>execute(): Execute each action in a plan;</li>
+<li>succeeded(): Agent believes that the intention has achieved;</li>
+<li>impossible(): Agent believes that the intention is achievable;</li>
+<li>reconsider(): Agent believes that the intention need to be reconsidered (Optional);</li>
+</ul>
+<h2 class="mume-header" id="3-chapter-11-nash-equilibrium">3. Chapter 11 Nash Equilibrium</h2>
+
+<p>A strategies profile is in Nash equilibrium if all players cannot deviate to obtain a higher payoff.</p>
+<ul>
+<li>The outcomes (C, D) and (D, C) are pure strategy Nash equilibria.</li>
+<li>Because, if Player 1 does action_C, the best action for player 2 is action_D.</li>
+<li>Similarly, ...</li>
+</ul>
+<h2 class="mume-header" id="4-chapter-12-voting">4. Chapter 12 Voting</h2>
+
+<h4 class="mume-header" id="41-plurality">4.1 Plurality</h4>
+
+<ul>
+<li>Winner is the one with the largest number of points.</li>
+<li>Tactical Voting: Voter may vote a candidate who is not true preference profile.</li>
+<li>Condorcet&#x2019;s Paradox: no matter which outcome we choose, most voters will be unhappy with the outcome</li>
+</ul>
+<h4 class="mume-header" id="42-sequential-majority-elections">4.2 Sequential Majority Elections</h4>
+
+<ul>
+<li>Reduce a general election to a series of pairwise elections.</li>
+<li>Anomalies: fix an agenda using a majority graph for a special candidate to win;<br>
+<img src="4.2.png" alt="example"></li>
+<li>Condorcet Winner: winner for every possible agenda;</li>
+</ul>
+<h4 class="mume-header" id="43-borda-count">4.3 Borda Count</h4>
+
+<ul>
+<li>Calculates the Borda Count for each candidate, the winner is the candidate with the highest value;</li>
+</ul>
+<h4 class="mume-header" id="44-instant-runoff-voting">4.4 Instant Runoff Voting</h4>
+
+<ul>
+<li>Counting proceeds in rounds, remove the last place candidate until there is only single candidate remained.</li>
+</ul>
+<h4 class="mume-header" id="45-slater-ranking">4.5 Slater Ranking</h4>
+
+<ul>
+<li>Winner is the candidate with minimal cost to be Condorcet Winner;<br>
+<img src="4.5.png" alt="example"></li>
+</ul>
+<h2 class="mume-header" id="5-chapter-13-forming-coalition">5. Chapter 13 Forming Coalition</h2>
+
+<h4 class="mume-header" id="51-objection">5.1 Objection</h4>
+
+<p>A set of agents C rejects an outcome of the grand coalition when there is another outcome for C in which all members of C obtain better benefits.</p>
+<h4 class="mume-header" id="52-core">5.2 Core</h4>
+
+<p>the core of a grand coalition is a set of outcomes (&lt; &#x1D465;1,&#x2026;, &#x1D465;&#x1D45B; &gt;) in which each of them follows:<img src="5.2.png" alt="Core">;</p>
+<h4 class="mume-header" id="53-shapley-axiom-and-value">5.3 Shapley Axiom and Value</h4>
+
+<h5 class="mume-header" id="531-axiom">5.3.1 Axiom</h5>
+
+<ul>
+<li>Symmetry: Agents that make the same contribution should get the same payoff;</li>
+<li>Dummy Player: Agents that make not synergy should get what they can earn on own.</li>
+<li>Additivity: If games are combined, the value an agent gets should be the sum of the utility of each individual game.</li>
+</ul>
+<h5 class="mume-header" id="531-value">5.3.1 Value</h5>
+
+<p>The Shapley value of an agent is the average amount of its expected contribution to a coalition.</p>
+<ul>
+<li>Formal Function: <img src="5.3.1.1.png" alt="FF">.</li>
+<li>Induced Subgraph: <img src="5.3.1.2.png" alt="ISF">.</li>
+<li>Marginal Contribution Nets: <img src="5.3.1.3.png" alt="MCNF">.</li>
+</ul>
+<h4 class="mume-header" id="54-representing-characteristic-functions">5.4 Representing Characteristic Functions</h4>
+
+<ul>
+<li>Induced Subgraph:
+<ul>
+<li>Represent &#x1D708; as an undirected graph;</li>
+<li><img src="5.4.1.png" alt="IS">.</li>
+</ul>
+</li>
+<li>Marginal Contribution Nets:
+<ul>
+<li>Represent &#x1D708; as a set of rules;</li>
+<li><img src="5.4.2.png" alt="MCN">.</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="6-chapter-16-abstract-argumentation-system">6. Chapter 16 Abstract Argumentation System</h2>
+
+<h4 class="mume-header" id="61-conflict-free-positions">6.1 Conflict Free Positions</h4>
+
+<ul>
+<li>A position S is conflict-free if no member of S attacks another member of S.</li>
+</ul>
+<h4 class="mume-header" id="62-mutually-defensive-positions">6.2 Mutually Defensive Positions</h4>
+
+<ul>
+<li>A position S is mutually defensive if every element of S, that is attacked, is defended by some element of S.</li>
+</ul>
+<h4 class="mume-header" id="63-admissible-positions">6.3 Admissible Positions</h4>
+
+<ul>
+<li>A position that is conflict-free and mutually defensive is admissible.</li>
+</ul>
+<h4 class="mume-header" id="64-preferred-extension">6.4 Preferred Extension</h4>
+
+<p>A position S is a preferred extension if S is admissible and no superset of S is admissible.</p>
+<ul>
+<li>An argument is sceptically accepted if it is a member of every preferred extension</li>
+<li>An argument is credulously accepted if it is a member of at least one preferred extension</li>
+</ul>
+<h4 class="mume-header" id="65-grounded-extension">6.5 Grounded Extension</h4>
+
+<p>A grounded extension is the least questionable position.</p>
+<ul>
+<li>Arguments are guaranteed to be acceptable if they aren&#x2019;t attacked.
+<ul>
+<li>they are IN</li>
+</ul>
+</li>
+<li>Arguments attacked by those that are in are therefore unacceptable
+<ul>
+<li>They are OUT</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
